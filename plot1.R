@@ -1,5 +1,6 @@
 ## Exploratory Data Analysis
 ## Project 1
+## Plot 1
 ## December 6, 2014
 
 setwd("~/Documents/Coursera/DataScienceTrack/ExploratoryDataAnalysis/Project1/ExData_Plotting1")
