@@ -8,7 +8,7 @@ setwd("~/Documents/Coursera/DataScienceTrack/ExploratoryDataAnalysis/Project1/Ex
 ## Read data file in
 
 ## Slow and simple
-hp <- read.csv2("household_power_consumption.txt", header=T)
+hp <- read.csv2("household_power_consumption.txt", header=T, na.strings="?", stringsAsFactors=FALSE)
 
 ## A bit more involved, using sql. although the following doesn't seem to work
 ##library(sqldf)
@@ -23,6 +23,6 @@ hp2$Global_active_power2<-as.numeric(hp2$Global_active_power)
 par(mar=c(5,6,4,2))
 par(cex.main=0.9, cex.lab=0.75, cex.axis=0.75)
 dev.copy(png,"plot1.png",width=480,height=480,units="px")
-hist(hp2$Global_active_power2/500, main="Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
+hist(hp2$Global_active_power2, main="Global Active Power", xlab="Global Active Power (kilowatts)", col="red")
 dev.off()
 

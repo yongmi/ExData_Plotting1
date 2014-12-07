@@ -1,6 +1,6 @@
 ## Exploratory Data Analysis
 ## Project 1
-## Plot 3
+## Plot 4
 ## December 7, 2014
 
 setwd("~/Documents/Coursera/DataScienceTrack/ExploratoryDataAnalysis/Project1/ExData_Plotting1")
@@ -17,16 +17,23 @@ hp2 <-subset(hp,Date2==as.Date("2007-02-01")|Date2==as.Date("2007-02-02"))
 hp2$day <- strftime(hp2$Date2, "%A")
 hp2$DateTime <- strptime(paste(hp2$Date,hp2$Time), "%d/%m/%Y %T")
 
+hp2$Global_active_power2<-as.numeric(hp2$Global_active_power)
+hp2$Global_reactive_power2<-as.numeric(hp2$Global_reactive_power)
 hp2$Sub_metering_1n<-as.numeric(hp2$Sub_metering_1)
 hp2$Sub_metering_2n<-as.numeric(hp2$Sub_metering_2)
 hp2$Sub_metering_3n<-as.numeric(hp2$Sub_metering_3)
+hp2$Voltage2<-as.numeric(hp2$Voltage)
 
-par(mar=c(5,6,4,2))
+par(mfcol=c(2,2))
+par(mar=c(6,5,3,1))
 par(cex.main=0.9, cex.lab=0.75, cex.axis=0.75)
-dev.copy(png,"plot3.png",width=480,height=480,units="px")
+dev.copy(png,"plot4.png",width=480,height=480,units="px")
+plot(hp2$DateTime, hp2$Global_active_power2, type="l", xlab="", ylab="Global Active Power")
 plot(hp2$DateTime, hp2$Sub_metering_1n, type="l", xlab="", ylab="Energy sub metering")
 lines(hp2$DateTime, hp2$Sub_metering_2n, type="l", col="red")
 lines(hp2$DateTime, hp2$Sub_metering_3n, type="l", col="blue")
-legend("topright", legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), cex=0.75, col=c("black","red","blue"), lwd=1);
+legend("topright", legend=c("Sub_metering_1","Sub_metering_2","Sub_metering_3"), cex=0.75, col=c("black","red","blue"), lwd=1, bty="n");
+plot(hp2$DateTime, hp2$Voltage2, type="l", xlab="datetime", ylab="Voltage")
+plot(hp2$DateTime, hp2$Global_reactive_power2, type="l", xlab="datetime", ylab="Global_reactive_power")
 dev.off()
 
